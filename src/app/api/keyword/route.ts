@@ -2,6 +2,9 @@ import { NextResponse } from 'next/server';
 import { getKeywordData, getRelatedKeywords } from '@/lib/dataforseo';
 import { MOCK_DATA } from '@/lib/mockData';
 
+// Required for Cloudflare Pages deployment
+export const runtime = 'edge';
+
 export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
     const query = searchParams.get('q');
