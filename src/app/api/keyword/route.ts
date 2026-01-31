@@ -17,7 +17,7 @@ export async function GET(request: Request) {
         // Transformation Logic
         // This is a simplified mapping. Real DataForSEO response structure needs to be safely traversed.
 
-        let overview = { ...MOCK_DATA.overview };
+        const overview = { ...MOCK_DATA.overview };
         let trend = [...MOCK_DATA.trend];
         let related = [...MOCK_DATA.related];
 
@@ -42,6 +42,7 @@ export async function GET(request: Request) {
 
             // Monthly searches for trend
             if (result.monthly_searches) {
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 trend = result.monthly_searches.map((ms: any) => ({
                     month: new Date(ms.year, ms.month - 1).toLocaleString('default', { month: 'short' }),
                     volume: ms.search_volume
@@ -53,6 +54,7 @@ export async function GET(request: Request) {
             // result is an array of items for keywords_for_keywords
             const items = relatedData.tasks[0].result;
             if (Array.isArray(items)) {
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 related = items.map((item: any) => ({
                     keyword: item.keyword,
                     volume: formatNumber(item.search_volume),

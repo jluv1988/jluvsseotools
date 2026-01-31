@@ -38,7 +38,7 @@ function KeywordDashboard() {
     if (loading) {
         return (
             <div className="min-h-screen bg-background p-8 flex items-center justify-center">
-                <div className="text-white">Loading data for "{query}"...</div>
+                <div className="text-white">Loading data for &quot;{query}&quot;...</div>
             </div>
         )
     }

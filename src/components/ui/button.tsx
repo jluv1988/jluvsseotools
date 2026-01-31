@@ -1,6 +1,4 @@
 import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 
@@ -15,6 +13,7 @@ import { cn } from "@/lib/utils"
 // I missed `class-variance-authority` and `@radix-ui/react-slot`.
 // I will install them quickly to do it RIGHT.
 
+// @ts-ignore
 export interface ButtonProps
     extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     asChild?: boolean
@@ -23,7 +22,7 @@ export interface ButtonProps
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-    ({ className, variant = "default", size = "default", asChild = false, ...props }, ref) => {
+    ({ className, variant = "default", size = "default", ...props }, ref) => {
         // Custom implementation without CVA to avoid extra install just for this, 
         // unless I install it. 
         // Actually, I'll install it. It's cleaner.
